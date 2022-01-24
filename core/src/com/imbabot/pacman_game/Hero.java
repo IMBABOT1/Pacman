@@ -7,7 +7,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
 
-public class Pacman {
+public class Hero {
 
     private Vector2 position;
     private Texture texture;
@@ -18,8 +18,10 @@ public class Pacman {
     private boolean isPressedW;
     private boolean isPressedS;
 
+    private float offset;
 
-    public Pacman(){
+
+    public Hero(){
         this.texture = new Texture("Pacman.png");
         this.position = new Vector2(100, 100);
         this.speed = 300.0f;
@@ -27,10 +29,27 @@ public class Pacman {
         this.isPressedA = false;
         this.isPressedS = false;
         this.isPressedW = false;
+        this.offset = 36;
     }
 
     public void update(float dt){
         movement(dt);
+        checkBounds();
+    }
+
+    private void checkBounds(){
+        if (position.x > 1280 - offset){
+            position.x = 1280 - offset;
+        }
+        if (position.x < 0 + offset){
+            position.x = 0 + offset;
+        }
+        if (position.y > 720 - offset){
+            position.y = 720 - offset;
+        }
+        if (position.y < 0 + offset){
+            position.y = 0 + offset;
+        }
     }
 
     public void movement(float dt){
@@ -74,6 +93,6 @@ public class Pacman {
     }
 
     public void render(SpriteBatch batch){
-        batch.draw(texture, position.x - 35, position.y - 35);
+        batch.draw(texture, position.x - offset, position.y - offset);
     }
 }

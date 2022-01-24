@@ -8,13 +8,13 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class PacmanGame extends ApplicationAdapter {
 	private SpriteBatch batch;
-	private Pacman pacman;
+	private Hero hero;
 	private Texture textureGrass;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		pacman = new Pacman();
+		hero = new Hero();
 		textureGrass = new Texture("grass.png");
 	}
 
@@ -29,13 +29,13 @@ public class PacmanGame extends ApplicationAdapter {
 				batch.draw(textureGrass, i * 80, j * 80);
 			}
 		}
-		pacman.render(batch);
+		hero.render(batch);
 		batch.end();
 	}
 
 
 	public void update(float dt){
-		pacman.update(dt);
+		hero.update(dt);
 	}
 	
 	@Override
