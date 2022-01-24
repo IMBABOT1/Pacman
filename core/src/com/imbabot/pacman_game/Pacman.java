@@ -18,6 +18,7 @@ public class Pacman {
     private boolean isPressedW;
     private boolean isPressedS;
 
+
     public Pacman(){
         this.texture = new Texture("Pacman.png");
         this.position = new Vector2(100, 100);
@@ -69,9 +70,10 @@ public class Pacman {
         if (isPressedW){
             position.y += speed * dt;
         }
+
     }
 
     public void render(SpriteBatch batch){
-        batch.draw(texture, position.x, position.y);
+        batch.draw(texture, position.x - 35, position.y - 35);
     }
 }
