@@ -13,8 +13,8 @@ import com.badlogic.gdx.math.Vector2;
 public class Hero {
 
     private GameController gc;
-    private int cellX;
-    private int cellY;
+    private float cellX;
+    private float cellY;
     private TextureRegion texture;
     private float speed;
 
@@ -31,11 +31,13 @@ public class Hero {
 
 
 
+
+
     public Hero(TextureAtlas atlas, GameController gc){
         this.texture = atlas.findRegion("Pacman");
         this.cellX = 1;
         this.cellY = 1;
-        this.speed = 300.0f;
+        this.speed = 5f;
         this.isPressedD = false;
         this.isPressedA = false;
         this.isPressedS = false;
@@ -67,41 +69,41 @@ public class Hero {
     }
 
     public void movement(float dt){
-        if (Gdx.input.isKeyPressed(Input.Keys.D)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.D)){
             isPressedD = true;
             isPressedA = false;
             isPressedS = false;
             isPressedW = false;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.A)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.A)){
             isPressedD = false;
             isPressedA = true;
             isPressedS = false;
             isPressedW = false;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.S)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.S)){
             isPressedD = false;
             isPressedA = false;
             isPressedS = true;
             isPressedW = false;
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.W)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.W)){
             isPressedD = false;
             isPressedA = false;
             isPressedS = false;
             isPressedW = true;
         }
         if (isPressedA){
-            cellX--;
+            cellX -= speed * dt;
         }
         if (isPressedD){
-            cellX++;
+            cellX += speed * dt;
         }
         if (isPressedS){
-            cellY--;
+            cellY -= speed * dt;
         }
         if (isPressedW){
-            cellY++;
+            cellY += speed * dt;
         }
 
     }
