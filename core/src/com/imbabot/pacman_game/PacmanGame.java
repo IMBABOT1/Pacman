@@ -14,15 +14,16 @@ public class PacmanGame extends ApplicationAdapter {
 	private Hero hero;
 	private BitmapFont font32;
 	private TextureAtlas atlas;
-	private TextureRegion textureGrass;
+	private GameMap gameMap;
+
 
 	@Override
 	public void create () {
 		this.batch = new SpriteBatch();
 		this.atlas = new TextureAtlas("game.pack");
 		this.hero = new Hero(atlas);
-		this.textureGrass = atlas.findRegion("grass");
 		this.font32 = new BitmapFont(Gdx.files.internal("font32.fnt"));
+		this.gameMap = new GameMap(atlas);
 	}
 
 	@Override
@@ -31,11 +32,7 @@ public class PacmanGame extends ApplicationAdapter {
 		update(dt);
 		ScreenUtils.clear(1, 1, 1, 1);
 		batch.begin();
-		for (int i = 0; i < 16; i++) {
-			for (int j = 0; j < 9; j++) {
-				batch.draw(textureGrass, i * 80, j * 80);
-			}
-		}
+		gameMap.render(batch);
 		hero.render(batch);
 		hero.renderGUI(batch, font32);
 		batch.end();
@@ -43,11 +40,13 @@ public class PacmanGame extends ApplicationAdapter {
 
 
 	public void update(float dt){
+		gameMap.update(dt);
 		hero.update(dt);
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
+		atlas.dispose();
 	}
 }
