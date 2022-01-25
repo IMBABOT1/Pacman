@@ -5,13 +5,15 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 
 public class Hero {
 
     private Vector2 position;
-    private Texture texture;
+    private TextureRegion texture;
     private float speed;
 
     private boolean isPressedD;
@@ -22,10 +24,11 @@ public class Hero {
     private float offset;
 
     private StringBuilder stringBuilder;
+    private int score;
 
 
-    public Hero(){
-        this.texture = new Texture("Pacman.png");
+    public Hero(TextureAtlas atlas){
+        this.texture = atlas.findRegion("Pacman");
         this.position = new Vector2(100, 100);
         this.speed = 300.0f;
         this.isPressedD = false;
@@ -34,6 +37,7 @@ public class Hero {
         this.isPressedW = false;
         this.offset = 36;
         this.stringBuilder = new StringBuilder();
+        this.score = 0;
     }
 
     public void update(float dt){
@@ -98,7 +102,7 @@ public class Hero {
 
     public void renderGUI(SpriteBatch batch, BitmapFont font){
         stringBuilder.setLength(0);
-        stringBuilder.append("Score: ");
+        stringBuilder.append("Score: " + score);
         font.draw(batch, stringBuilder, 10, 700);
     }
 

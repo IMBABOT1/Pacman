@@ -5,21 +5,24 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class PacmanGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Hero hero;
-	private Texture textureGrass;
 	private BitmapFont font32;
-	
+	private TextureAtlas atlas;
+	private TextureRegion textureGrass;
+
 	@Override
 	public void create () {
 		this.batch = new SpriteBatch();
-		this.hero = new Hero();
-		this.textureGrass = new Texture("grass.png");
+		this.atlas = new TextureAtlas("game.pack");
+		this.hero = new Hero(atlas);
+		this.textureGrass = atlas.findRegion("grass");
 		this.font32 = new BitmapFont(Gdx.files.internal("font32.fnt"));
-
 	}
 
 	@Override
