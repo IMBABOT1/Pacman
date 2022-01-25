@@ -11,19 +11,18 @@ import com.badlogic.gdx.utils.ScreenUtils;
 
 public class PacmanGame extends ApplicationAdapter {
 	private SpriteBatch batch;
-	private Hero hero;
 	private BitmapFont font32;
 	private TextureAtlas atlas;
-	private GameMap gameMap;
+	private GameController gameController;
 
 
 	@Override
 	public void create () {
 		this.batch = new SpriteBatch();
 		this.atlas = new TextureAtlas("game.pack");
-		this.hero = new Hero(atlas);
 		this.font32 = new BitmapFont(Gdx.files.internal("font32.fnt"));
-		this.gameMap = new GameMap(atlas);
+		this.gameController = new GameController(atlas);
+
 	}
 
 	@Override
@@ -32,16 +31,15 @@ public class PacmanGame extends ApplicationAdapter {
 		update(dt);
 		ScreenUtils.clear(1, 1, 1, 1);
 		batch.begin();
-		gameMap.render(batch);
-		hero.render(batch);
-		hero.renderGUI(batch, font32);
+		gameController.getGameMap().render(batch);
+		gameController.getHero().renderGUI(batch, font32);
+		gameController.getHero().render(batch);
 		batch.end();
 	}
 
 
 	public void update(float dt){
-		gameMap.update(dt);
-		hero.update(dt);
+		gameController.update(dt);
 	}
 	
 	@Override
