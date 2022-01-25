@@ -28,7 +28,7 @@ public class PacmanGame extends ApplicationAdapter {
 	@Override
 	public void render () {
 		float dt = Gdx.graphics.getDeltaTime();
-		update(dt);
+		gameController.update(dt);
 		ScreenUtils.clear(1, 1, 1, 1);
 		batch.begin();
 		gameController.getGameMap().render(batch);
@@ -38,9 +38,6 @@ public class PacmanGame extends ApplicationAdapter {
 	}
 
 
-	public void update(float dt){
-		gameController.update(dt);
-	}
 	
 	@Override
 	public void dispose () {

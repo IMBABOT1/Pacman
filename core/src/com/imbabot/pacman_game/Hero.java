@@ -12,7 +12,9 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Hero {
 
-    private Vector2 position;
+    private GameController gc;
+    private int cellX;
+    private int cellY;
     private TextureRegion texture;
     private float speed;
 
@@ -27,9 +29,12 @@ public class Hero {
     private int score;
 
 
-    public Hero(TextureAtlas atlas){
+
+
+    public Hero(TextureAtlas atlas, GameController gc){
         this.texture = atlas.findRegion("Pacman");
-        this.position = new Vector2(100, 100);
+        this.cellX = 1;
+        this.cellY = 1;
         this.speed = 300.0f;
         this.isPressedD = false;
         this.isPressedA = false;
@@ -38,6 +43,7 @@ public class Hero {
         this.offset = 36;
         this.stringBuilder = new StringBuilder();
         this.score = 0;
+        this.gc = gc;
     }
 
     public void update(float dt){
@@ -46,18 +52,18 @@ public class Hero {
     }
 
     private void checkBounds(){
-        if (position.x > 1280 - offset){
-            position.x = 1280 - offset;
-        }
-        if (position.x < 0 + offset){
-            position.x = 0 + offset;
-        }
-        if (position.y > 720 - offset){
-            position.y = 720 - offset;
-        }
-        if (position.y < 0 + offset){
-            position.y = 0 + offset;
-        }
+//        if (position.x > 1280 - offset){
+//            position.x = 1280 - offset;
+//        }
+//        if (position.x < 0 + offset){
+//            position.x = 0 + offset;
+//        }
+//        if (position.y > 720 - offset){
+//            position.y = 720 - offset;
+//        }
+//        if (position.y < 0 + offset){
+//            position.y = 0 + offset;
+//        }
     }
 
     public void movement(float dt){
@@ -86,16 +92,16 @@ public class Hero {
             isPressedW = true;
         }
         if (isPressedA){
-            position.x -= speed * dt;
+            cellX--;
         }
         if (isPressedD){
-            position.x += speed * dt;
+            cellX++;
         }
         if (isPressedS){
-            position.y -= speed * dt;
+            cellY--;
         }
         if (isPressedW){
-            position.y += speed * dt;
+            cellY++;
         }
 
     }
@@ -107,6 +113,6 @@ public class Hero {
     }
 
     public void render(SpriteBatch batch){
-        batch.draw(texture, position.x - offset, position.y - offset);
+        batch.draw(texture, cellX * GameMap.CELL_SIZE, cellY * GameMap.CELL_SIZE);
     }
 }

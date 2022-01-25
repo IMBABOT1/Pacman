@@ -9,7 +9,7 @@ public class GameController {
 
     public GameController(TextureAtlas atlas){
         this.gameMap = new GameMap(atlas);
-        this.hero = new Hero(atlas);
+        this.hero = new Hero(atlas, this);
     }
 
     public Hero getHero() {

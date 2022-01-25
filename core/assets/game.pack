@@ -3,17 +3,17 @@ images1.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-grass
+Pacman
   rotate: false
   xy: 2, 2
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
-Pacman
+grass
   rotate: false
   xy: 84, 2
-  size: 71, 71
-  orig: 71, 71
+  size: 80, 80
+  orig: 80, 80
   offset: 0, 0
   index: -1
