@@ -3,6 +3,7 @@ package com.imbabot.pacman_game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -20,6 +21,8 @@ public class Hero {
 
     private float offset;
 
+    private StringBuilder stringBuilder;
+
 
     public Hero(){
         this.texture = new Texture("Pacman.png");
@@ -30,6 +33,7 @@ public class Hero {
         this.isPressedS = false;
         this.isPressedW = false;
         this.offset = 36;
+        this.stringBuilder = new StringBuilder();
     }
 
     public void update(float dt){
@@ -90,6 +94,12 @@ public class Hero {
             position.y += speed * dt;
         }
 
+    }
+
+    public void renderGUI(SpriteBatch batch, BitmapFont font){
+        stringBuilder.setLength(0);
+        stringBuilder.append("Score: ");
+        font.draw(batch, stringBuilder, 10, 700);
     }
 
     public void render(SpriteBatch batch){

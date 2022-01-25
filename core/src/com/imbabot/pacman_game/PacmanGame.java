@@ -3,6 +3,7 @@ package com.imbabot.pacman_game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
@@ -10,12 +11,15 @@ public class PacmanGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Hero hero;
 	private Texture textureGrass;
+	private BitmapFont font32;
 	
 	@Override
 	public void create () {
-		batch = new SpriteBatch();
-		hero = new Hero();
-		textureGrass = new Texture("grass.png");
+		this.batch = new SpriteBatch();
+		this.hero = new Hero();
+		this.textureGrass = new Texture("grass.png");
+		this.font32 = new BitmapFont(Gdx.files.internal("font32.fnt"));
+
 	}
 
 	@Override
@@ -30,6 +34,7 @@ public class PacmanGame extends ApplicationAdapter {
 			}
 		}
 		hero.render(batch);
+		hero.renderGUI(batch, font32);
 		batch.end();
 	}
 
