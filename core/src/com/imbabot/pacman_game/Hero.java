@@ -12,6 +12,11 @@ import com.badlogic.gdx.math.Vector2;
 
 public class Hero {
 
+    private int rightBorder;
+    private int leftBorder;
+    private int top;
+    private int bottom;
+
     private GameController gc;
     private float cellX;
     private float cellY;
@@ -46,6 +51,10 @@ public class Hero {
         this.stringBuilder = new StringBuilder();
         this.score = 0;
         this.gc = gc;
+        this.leftBorder = 0;
+        this.rightBorder = 15;
+        this.top = 8;
+        this.bottom = 0;
     }
 
     public void update(float dt){
@@ -54,6 +63,19 @@ public class Hero {
     }
 
     private void checkBounds(){
+        if (cellX > rightBorder){
+            cellX = rightBorder;
+        }
+        if (cellX < leftBorder){
+            cellX = leftBorder;
+        }
+        if (cellY > top){
+            cellY = top;
+        }
+        if (cellY < bottom){
+            cellY = bottom;
+        }
+
 //        if (position.x > 1280 - offset){
 //            position.x = 1280 - offset;
 //        }
@@ -105,7 +127,6 @@ public class Hero {
         if (isPressedW){
             cellY += speed * dt;
         }
-
     }
 
     public void renderGUI(SpriteBatch batch, BitmapFont font){
