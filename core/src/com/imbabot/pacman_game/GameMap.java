@@ -21,8 +21,6 @@ public class GameMap {
         return CELLS_Y;
     }
 
-
-
     private byte[][] data;
     private TextureRegion grassTexture;
     private TextureRegion wallTexture;
@@ -30,23 +28,7 @@ public class GameMap {
     public GameMap(TextureAtlas atlas){
         this.data = new byte[CELLS_X][CELLS_Y];
         this.grassTexture = atlas.findRegion("grass");
-        this.wallTexture =  atlas.findRegion("walls");
-        this.data[1][0] = TERRAIN_WALL;
-        this.data[2][0] = TERRAIN_WALL;
-        this.data[3][0] = TERRAIN_WALL;
-        this.data[4][0] = TERRAIN_WALL;
-        this.data[5][0] = TERRAIN_WALL;
-        this.data[6][0] = TERRAIN_WALL;
-        this.data[7][0] = TERRAIN_WALL;
-        this.data[8][0] = TERRAIN_WALL;
-        this.data[9][0] = TERRAIN_WALL;
-        this.data[10][0] = TERRAIN_WALL;
-        this.data[11][0] = TERRAIN_WALL;
-        this.data[12][0] = TERRAIN_WALL;
-        this.data[13][0] = TERRAIN_WALL;
-        this.data[14][0] = TERRAIN_WALL;
-
-
+        this.wallTexture =  atlas.findRegion("wall");
     }
 
     public boolean isCellPossible(float CX, float CY){
