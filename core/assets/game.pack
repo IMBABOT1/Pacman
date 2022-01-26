@@ -3,24 +3,31 @@ images1.png
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-Pacman
+wall
   rotate: false
   xy: 2, 2
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
-grass
+topWall
   rotate: false
   xy: 84, 2
   size: 80, 80
   orig: 80, 80
   offset: 0, 0
   index: -1
-wall
+Pacman
   rotate: false
-  xy: 2, 84
-  size: 80, 40
-  orig: 80, 40
+  xy: 166, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 248, 2
+  size: 80, 80
+  orig: 80, 80
   offset: 0, 0
   index: -1

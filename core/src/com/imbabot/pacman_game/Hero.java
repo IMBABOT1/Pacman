@@ -58,47 +58,29 @@ public class Hero {
     }
 
     public void update(float dt){
+        Direction direction = null;
+        if (direction == Direction.RIGHT) {
+            cellX += speed * dt;
+        }else if (direction == Direction.LEFT){
+            cellX -= speed * dt;
+        }else if (direction == Direction.LEFT){
+            cellY += speed * dt;
+        }else if (direction == Direction.BUTTON){
+            cellY -= speed * dt;
+        }
         movement(dt);
-        checkBounds();
-    }
-
-    private void checkBounds(){
-//        if (cellX > rightBorder){
-//            cellX = rightBorder;
-//        }
-//        if (cellX < leftBorder){
-//            cellX = leftBorder;
-//        }
-//        if (cellY > top){
-//            cellY = top;
-//        }
-//        if (cellY < bottom){
-//            cellY = bottom;
-//        }
-
-//        if (position.x > 1280 - offset){
-//            position.x = 1280 - offset;
-//        }
-//        if (position.x < 0 + offset){
-//            position.x = 0 + offset;
-//        }
-//        if (position.y > 720 - offset){
-//            position.y = 720 - offset;
-//        }
-//        if (position.y < 0 + offset){
-//            position.y = 0 + offset;
-//        }
     }
 
     public void movement(float dt){
-        if (Gdx.input.isKeyJustPressed(Input.Keys.D) && gc.getGameMap().isCellPossible(cellX + 1, cellY)){
-            cellX++;
-        }else if (Gdx.input.isKeyJustPressed(Input.Keys.A) && gc.getGameMap().isCellPossible(cellX - 1, cellY)){
-            cellX--;
-        }else if (Gdx.input.isKeyJustPressed(Input.Keys.W) && gc.getGameMap().isCellPossible(cellX, cellY + 1)){
-            cellY++;
-        }else if (Gdx.input.isKeyJustPressed(Input.Keys.S) && gc.getGameMap().isCellPossible(cellX, cellY - 1)){
-            cellY--;
+        Direction direction = null;
+        if (Gdx.input.isKeyJustPressed(Input.Keys.D)){
+            direction = Direction.RIGHT;
+        }else if (Gdx.input.isKeyJustPressed(Input.Keys.A)){
+            direction = Direction.LEFT;
+        }else if (Gdx.input.isKeyJustPressed(Input.Keys.W)){
+            direction = Direction.TOP;
+        }else if (Gdx.input.isKeyJustPressed(Input.Keys.S)){
+            direction = Direction.BUTTON;
         }
     }
 
