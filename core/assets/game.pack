@@ -1,7 +1,7 @@
 
 images1.png
 format: RGBA8888
-filter: Linear,Linear
+filter: Nearest,Nearest
 repeat: none
 wall
   rotate: false
@@ -24,9 +24,16 @@ Pacman
   orig: 80, 80
   offset: 0, 0
   index: -1
-grass
+MonsterRed
   rotate: false
   xy: 248, 2
+  size: 80, 80
+  orig: 80, 80
+  offset: 0, 0
+  index: -1
+grass
+  rotate: false
+  xy: 330, 2
   size: 80, 80
   orig: 80, 80
   offset: 0, 0

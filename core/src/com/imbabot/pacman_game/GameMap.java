@@ -41,6 +41,9 @@ public class GameMap {
         if (data[(int) CX][(int) CY] == TERRAIN_WALL){
             return false;
         }
+        if (data[(int) CX][(int) CY] == TOP_WALL){
+            return false;
+        }
         return true;
     }
 
@@ -106,8 +109,6 @@ public class GameMap {
                 data[12][4] = 2;
                 data[12][3] = 2;
                 data[12][2] = 2;
-
-
 
             }
         }

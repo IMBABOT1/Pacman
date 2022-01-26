@@ -33,6 +33,7 @@ public class PacmanGame extends ApplicationAdapter {
 		batch.begin();
 		gameController.getGameMap().render(batch);
 		gameController.getHero().render(batch);
+		gameController.getMonster().render(batch);
 		gameController.getHero().renderGUI(batch, font32);
 		batch.end();
 	}
